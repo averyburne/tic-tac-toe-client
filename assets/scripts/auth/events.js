@@ -1,6 +1,7 @@
 // this is where event functions will be
 const api = require('./api')
 const ui = require('./ui')
+const gameLogic = require('../game-logic')
 
 const getFormFields = require('./../../../lib/get-form-fields')
 // function to change the box text to an x
@@ -52,10 +53,15 @@ const updateBoard = function (event) {
     .catch(ui.updateBoard)
 }
 
+const checkWinner = function () {
+  event.preventDefault()
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  updateBoard
+  updateBoard,
+  checkWinner
 }
