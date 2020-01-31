@@ -10,7 +10,6 @@ const onSignUp = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
-  console.log('hello')
   console.log(data)
 
   api.signUp(data)
@@ -20,9 +19,9 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-
   const form = event.target
   const data = getFormFields(form)
+  console.log(data)
   api.signIn(data)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
@@ -53,15 +52,10 @@ const updateBoard = function (event) {
     .catch(ui.updateBoard)
 }
 
-const checkWinner = function () {
-  event.preventDefault()
-}
-
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  updateBoard,
-  checkWinner
+  updateBoard
 }
