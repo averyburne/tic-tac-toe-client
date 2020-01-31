@@ -1,7 +1,7 @@
 // this is where event functions will be
 const api = require('./api')
 const ui = require('./ui')
-const gameLogic = require('../game-logic')
+// const gameLogic = require('../game-logic')
 
 const getFormFields = require('./../../../lib/get-form-fields')
 // function to change the box text to an x

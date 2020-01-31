@@ -1,16 +1,7 @@
 'use strict'
 
 const store = require('./../store')
-
-const updateBoard = function (event) {
-  const box = event.target
-  if ($(box).text() === 'X' || $(box).text() === 'O') {
-    $('#message').text('Hey that is not allowed')
-  } else {
-    $(box).text('X')
-    $('#message').text('you placed an x')
-  }
-}
+// const gameLogic = require('../game-logic')
 
 const onSignUpSuccess = function (response) {
   console.log(response)
@@ -29,6 +20,5 @@ const onSignUpFailure = function (response) {
 
 module.exports = {
   onSignUpSuccess,
-  onSignUpFailure,
-  updateBoard
+  onSignUpFailure
 }
