@@ -61,12 +61,21 @@ const onSignOutFailure = function (response) {
 
 const onGetGamesSuccess = function (response) {
   // ('#turn-message').text("Here's the games")
-  console.log(response)
   $('.turn-message').text(response.games.length)
+  store.id = response.games.length
+  store.game = response.games[store.id - 1]
+  console.log(store.game.id)
+  console.log(response.games[store.id - 1])
 }
 
 const onGetGamesFailure = function (response) {
-  // ('#turn-message').text("Couldn't get games")
+  ('.turn-message').text("Couldn't get games")
+  console.log(response)
+}
+
+const onUpdateBoard = function (response) {
+  // const box = event.target
+  // response.games[response.games.length - 1].cells[box.val()] = 'x'
   console.log(response)
 }
 
@@ -80,5 +89,6 @@ module.exports = {
   onSignOutSuccess,
   onSignOutFailure,
   onGetGamesSuccess,
-  onGetGamesFailure
+  onGetGamesFailure,
+  onUpdateBoard
 }

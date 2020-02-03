@@ -43,13 +43,20 @@ const onSignOut = function (event) {
     .catch(ui.onSignOutFailure)
 }
 
-const onGetGames = function (event) {
+const onGetGames = function () {
   event.preventDefault()
-  // const form = event.target
-  // const data = getFormFields(form)
   api.getGames()
     .then(ui.onGetGamesSuccess)
     .catch(ui.onGetGamesFailure)
+}
+
+const onUpdateGame = function (event) {
+  event.preventDefault()
+  const box = event.target.getAttribute('value')
+  console.log(box)
+  api.getGames()
+    .then(ui.onUpdateBoard)
+    .catch('Couldnt update')
 }
 
 // const onCreateGame = function (event) {
@@ -62,5 +69,6 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onGetGames
+  onGetGames,
+  onUpdateGame
 }

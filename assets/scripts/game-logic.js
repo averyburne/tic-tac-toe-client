@@ -3,6 +3,7 @@
 // const ui = require('./auth/ui')
 const store = require('./store')
 const api = require('./auth/api')
+const events = require('./auth/events')
 
 // const gameBoard = [$('#square0'), $('#square1'), $('#square2'), $('#square3'), $('#square4'), $('#square5'), $('#square6'), $('#square7'), $('#square8')]
 
@@ -12,6 +13,7 @@ let emptyBoard = []
 let xTotalWin = 0
 let oTotalWin = 0
 let totalDraws = 0
+let gameStatus = 'in progress'
 
 const checkWinner = function () {
   // added conditional that this should not run if the game
@@ -30,10 +32,15 @@ const checkWinner = function () {
       // changes total wins on html page
       $('.x-win').text("X's total wins: " + xTotalWin)
       store.xGamesWon++
-      // Adds game to the api
+      const data = {
+        'game': {
+          'over': false
+        }
+      }
+      api.updateGame(data)
       api.createGame()
       // returns true so the updateBoard function knows to stop running
-      return true
+      gameStatus = 'done'
       // function checks to see if any of the 8 combos for O are met
     } else if (($('#square0').text() === 'O' && $('#square1').text() === 'O' && $('#square2').text() === 'O') || ($('#square3').text() === 'O' && $('#square4').text() === 'O' && $('#square5').text() === 'O') || ($('#square6').text() === 'O' && $('#square7').text() === 'O' && $('#square8').text() === 'O') || ($('#square0').text() === 'O' && $('#square3').text() === 'O' && $('#square6').text() === 'O') || ($('#square1').text() === 'O' && $('#square4').text() === 'O' && $('#square7').text() === 'O') || ($('#square2').text() === 'O' && $('#square5').text() === 'O' && $('#square8').text() === 'O') || ($('#square0').text() === 'O' && $('#square4').text() === 'O' && $('#square8').text() === 'O') || ($('#square2').text() === 'O' && $('#square4').text() === 'O' && $('#square6').text() === 'O')) {
       $('#winning-message').text('O won!')
@@ -46,9 +53,15 @@ const checkWinner = function () {
       $('.o-win').text("O's total wins: " + oTotalWin)
       store.xGamesWon++
       // Adds game to the api
+      const data = {
+        'game': {
+          'over': true
+        }
+      }
+      api.updateGame(data)
       api.createGame()
       // returns true so the updateBoard function knows to stop running
-      return true
+      gameStatus = 'done'
     } else if (emptyBoard.length >= 9) {
       // if the board is full and no one won, it tells the user it was a draw
       $('#winning-message').text("It's a draw")
@@ -60,10 +73,16 @@ const checkWinner = function () {
       // changes total draws on html page
       $('.total-draws').text('Total draws: ' + totalDraws)
       // Adds game to the api
+      const data = {
+        'game': {
+          'over': true
+        }
+      }
+      api.updateGame(data)
       api.createGame()
-      return true
+      gameStatus = 'done'
     } else {
-      return false
+      gameStatus = 'in progress'
     }
   }
 }
@@ -78,7 +97,8 @@ const whoseTurn = function () {
 
 const updateBoard = function (event) {
   const box = event.target
-  if (checkWinner() === false) {
+  const boxNum = event.target.getAttribute('value')
+  if (gameStatus === 'in progress') {
     if ($(box).text() === 'X' || $(box).text() === 'O') {
       $('#message').text('Hey that is not allowed')
     } else if (whoseTurn() === 'X') {
@@ -86,15 +106,36 @@ const updateBoard = function (event) {
       $(box).text('X')
       $('#message').text('you placed an x')
       emptyBoard.push('x')
+      events.onGetGames()
+      const data = {
+        'game': {
+          'cell': {
+            'index': boxNum,
+            'value': 'x'
+          },
+          'over': false
+        }
+      }
+      api.updateGame(data)
       checkWinner()
     } else if (whoseTurn() === 'O') {
       $('.turn-message').text("It's X's turn")
       $(box).text('O')
       $('#message').text('you placed an o')
       emptyBoard.push('x')
+      const data = {
+        'game': {
+          'cell': {
+            'index': boxNum,
+            'value': 'o'
+          },
+          'over': false
+        }
+      }
+      api.updateGame(data)
       checkWinner()
     }
-  } else if (checkWinner() === true) {
+  } else if (gameStatus === 'done') {
     $('#message').text('The game is over chief')
   }
 }
@@ -104,16 +145,11 @@ const newGame = function () {
   $('#winning-message').text('')
   $('.turn-message').text("It's X's turn")
   emptyBoard = []
-  store.numGames += 1
-}
-
-const getGames = function () {
-  $('.turn-message').text('Total Games: ' + store.numGames + ', Games won by X: ' + store.xGamesWon + ', Games won by O: ' + store.oGamesWon + ', total draws: ' + store.drawGames)
+  api.createGame()
 }
 
 module.exports = {
   checkWinner,
   updateBoard,
-  newGame,
-  getGames
+  newGame
 }

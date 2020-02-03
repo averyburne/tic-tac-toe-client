@@ -38,7 +38,7 @@ input {
 
 .row {
   // background: #ff0000;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   margin-top: 20px;
   margin-left: 200px;
   margin-right: 200px;
@@ -52,6 +52,16 @@ input {
 
 body {
   margin: 3px;
+}
+
+.new-game {
+  display: inline;
+  margin-bottom: 20px;
+}
+
+.bottom-section {
+  align-items: center;
+  justify-content: center;
 }
 
 #footer {
