@@ -2,6 +2,7 @@
 
 // const ui = require('./auth/ui')
 const store = require('./store')
+const api = require('./auth/api')
 
 // const gameBoard = [$('#square0'), $('#square1'), $('#square2'), $('#square3'), $('#square4'), $('#square5'), $('#square6'), $('#square7'), $('#square8')]
 
@@ -29,6 +30,8 @@ const checkWinner = function () {
       // changes total wins on html page
       $('.x-win').text("X's total wins: " + xTotalWin)
       store.xGamesWon++
+      // Adds game to the api
+      api.createGame()
       // returns true so the updateBoard function knows to stop running
       return true
       // function checks to see if any of the 8 combos for O are met
@@ -42,6 +45,8 @@ const checkWinner = function () {
       // changes total wins on html page
       $('.o-win').text("O's total wins: " + oTotalWin)
       store.xGamesWon++
+      // Adds game to the api
+      api.createGame()
       // returns true so the updateBoard function knows to stop running
       return true
     } else if (emptyBoard.length >= 9) {
@@ -54,6 +59,8 @@ const checkWinner = function () {
       totalDraws++
       // changes total draws on html page
       $('.total-draws').text('Total draws: ' + totalDraws)
+      // Adds game to the api
+      api.createGame()
       return true
     } else {
       return false

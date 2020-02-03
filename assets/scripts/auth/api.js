@@ -39,18 +39,25 @@ const signOut = function () {
   })
 }
 
-const getGames = function (event) {
+const getGames = function () {
   return $.ajax({
-    url: config.apiUrl + '/get-games',
-    method: 'GET'
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
-// const addGame = function () {
-//   return $.ajax({
-//     url: config.apiUrl +
-//   })
-// }
+const createGame = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 const updateBoard = function (event) {
   return $.ajax({
@@ -67,5 +74,7 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
+  getGames,
+  createGame,
   updateBoard
 }

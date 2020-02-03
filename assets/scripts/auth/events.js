@@ -43,19 +43,24 @@ const onSignOut = function (event) {
     .catch(ui.onSignOutFailure)
 }
 
-const updateBoard = function (event) {
+const onGetGames = function (event) {
   event.preventDefault()
-  const box = event.target
-  console.log('it worked')
-  api.updateBoard(box)
-    .then($(box).text('X'))
-    .catch(ui.updateBoard)
+  // const form = event.target
+  // const data = getFormFields(form)
+  api.getGames()
+    .then(ui.onGetGamesSuccess)
+    .catch(ui.onGetGamesFailure)
 }
+
+// const onCreateGame = function (event) {
+//   event.preventDefault()
+//
+// }
 
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  updateBoard
+  onGetGames
 }

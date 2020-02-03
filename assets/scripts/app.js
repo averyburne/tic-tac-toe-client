@@ -9,6 +9,9 @@ const gameLogic = require('./game-logic.js')
 // require('./example')
 
 $(() => {
+  $('#game-form').hide()
+  $('#change-password').hide()
+  $('#sign-out').hide()
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
@@ -16,5 +19,5 @@ $(() => {
   $('.box').on('click', gameLogic.updateBoard)
   // $('.box').on('click', gameLogic.checkWinner)
   $('.new-game').on('click', gameLogic.newGame)
-  $('.get-games').on('click', gameLogic.getGames)
+  $('#game-form').on('submit', events.onGetGames)
 })
