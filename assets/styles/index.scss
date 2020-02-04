@@ -30,8 +30,7 @@ input {
 
 .sign-in-message {
   text-align: center;
-  margin-right: 45%;
-  margin-left: 45%;
+  margin: 0 auto;
 }
 
 #sign-out {
@@ -40,7 +39,7 @@ input {
 
 #message {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 20px;
 }
 
@@ -50,13 +49,23 @@ input {
   font-size: 30px;
 }
 
+.start {
+  width: 200px;
+  text-align: center;
+  margin: 4px auto;
+}
+
 .stats {
 
 }
 
+.container {
+  display: flex;
+}
+
 .box {
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 50px;
   padding: 100px 0;
   text-align: center;
   font-size: 50px;

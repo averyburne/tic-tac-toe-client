@@ -3,7 +3,6 @@
 const store = require('./../store')
 
 const onSignUpSuccess = function (response) {
-  console.log(response)
   $('.sign-in-message').text(response.user.email + ' Successfully signed up')
   $('.sign-in-message').removeClass()
   $('.sign-in-message').addClass('success')
@@ -20,7 +19,6 @@ const onSignUpSuccess = function (response) {
 }
 
 const onSignUpFailure = function (response) {
-  console.log(response)
   $('.sign-in-message').removeClass()
   $('.sign-in-message').addClass('failure')
   $('.sign-in-message').text('Failed to sign up')
@@ -30,7 +28,6 @@ const onSignInSuccess = function (response) {
   $('.sign-in-message').text(response.user.email + ' Successfully signed in')
   $('#sign-in').trigger('reset')
   store.user = response.user
-  console.log(store.user)
   $('.sign-in-message').removeClass()
   $('.sign-in-message').addClass('success')
   $('.change-password').show()
@@ -86,31 +83,25 @@ const onGetGamesSuccess = function (response) {
   $('.total-game-message').text('Total games played is ' + response.games.length)
   store.id = response.games.length
   store.game = response.games[store.id - 1]
-  console.log(store.game.id)
-  console.log(response.games[store.id - 1])
 }
 
 const onGetGamesFailure = function (response) {
   ('.total-game-message').text("Couldn't get games")
-  console.log(response)
 }
 
 const onCreateGameSuccess = function (response) {
   store.game = response.game
-  console.log(store.game.id)
   $('.row').show()
 }
 
 const onCreateGameFailure = function (response) {
   store.game = response.game
-  console.log(store.game.id)
   $('#message').text("Couldn't bring up the game board")
 }
 
 const onUpdateBoard = function (response) {
   // const box = event.target
   // response.games[response.games.length - 1].cells[box.val()] = 'x'
-  console.log(store.game)
 }
 
 // const showPassword = function () {

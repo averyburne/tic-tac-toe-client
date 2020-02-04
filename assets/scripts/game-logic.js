@@ -169,6 +169,7 @@ const newGame = function () {
   emptyBoard = []
   events.onCreateGame()
   gameStatus = 'in progress'
+  $('#message').text('')
   // checkWinner()
 }
 
