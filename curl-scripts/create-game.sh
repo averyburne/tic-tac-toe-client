@@ -2,13 +2,8 @@
 
 curl 'https://tic-tac-toe-wdi.herokuapp.com/games' \
   --include \
-  --request PATCH \
+  --request POST \
   --header "Authorization: Token token=${TOKEN}" \
-  --header "Content-type: application/json" \
-  --data '{
-    "credentials": {
-      "status": "'"${STATUS}"'"
-    }
-  }'
+  --header "Content-type: application/json"
 
 echo

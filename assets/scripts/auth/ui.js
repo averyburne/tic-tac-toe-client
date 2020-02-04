@@ -1,67 +1,89 @@
 'use strict'
 
 const store = require('./../store')
-// const gameLogic = require('../game-logic')
 
 const onSignUpSuccess = function (response) {
   console.log(response)
-  $('#message').text(response.user.email + ' Successfully signed up')
-  // $('#message').removeClass()
-  // $('#message').addClass('success-message')
-  $('#change-password').show()
+  $('.sign-in-message').text(response.user.email + ' Successfully signed up')
+  $('.sign-in-message').removeClass()
+  $('.sign-in-message').addClass('success')
+  $('.change-password').show()
   $('#sign-out').show()
   $('#game-form').show()
   $('#sign-up').trigger('reset')
+  // $('.row').show()
+  $('.turn-message').show()
+  $('.bottom-section').show()
+  setTimeout(() => {
+    $('.sign-in-message').text('').removeClass('success')
+  }, 3000)
 }
 
 const onSignUpFailure = function (response) {
   console.log(response)
-  // $('#message').removeClass()
-  // $('#message').addClass('failure-message')
-  $('#message').text('Failed to sign up')
+  $('.sign-in-message').removeClass()
+  $('.sign-in-message').addClass('failure')
+  $('.sign-in-message').text('Failed to sign up')
 }
 
 const onSignInSuccess = function (response) {
-  $('#message').text(response.user.email + ' Successfully signed in')
+  $('.sign-in-message').text(response.user.email + ' Successfully signed in')
   $('#sign-in').trigger('reset')
   store.user = response.user
   console.log(store.user)
-  $('#change-password').show()
+  $('.sign-in-message').removeClass()
+  $('.sign-in-message').addClass('success')
+  $('.change-password').show()
   $('#sign-out').show()
   $('#game-form').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
+  // $('.row').show()
+  $('.turn-message').show()
+  $('.bottom-section').show()
+  setTimeout(() => {
+    $('.sign-in-message').text('').removeClass('failure')
+  }, 3000)
 }
 
 const onSignInFailure = function (response) {
-  $('#message').text('Failed to sign in')
+  $('.sign-in-message').text('Failed to sign in')
+  $('.sign-in-message').removeClass()
+  $('.sign-in-message').addClass('failure')
 }
 
 const onChangePasswordSuccess = function (response) {
-  $('#message').text('Successfully changed password')
+  $('.sign-in-message').text('Successfully changed password')
   $('#sign-up').trigger('reset')
 }
 
 const onChangePasswordFailure = function (response) {
-  $('#message').text('Failed to change password')
+  $('.sign-in-message').text('Failed to change password')
 }
 
 const onSignOutSuccess = function (response) {
-  $('#message').text('Successfully signed out')
-  $('#change-password').hide()
+  $('.sign-in-message').text('Successfully signed out')
+  $('.change-password').hide()
   $('#sign-out').hide()
   $('#sign-in').show()
   $('#sign-up').show()
+  // $('.x-win').text("X's total wins: 0")
+  // $('.o-win').text("O's total wins: 0")
+  // $('.total-draws').text('Total draws: 0')
+  // gameLogic.xTotalWin = 0
+  // gameLogic.oTotalWin = 0
+  // gameLogic.totalDraws = 0
+
   store.user = null
 }
 
 const onSignOutFailure = function (response) {
-  $('#message').text('Failed to sign out')
+  $('.sign-in-message').text('Failed to sign out')
 }
 
 const onGetGamesSuccess = function (response) {
   // ('#turn-message').text("Here's the games")
-  $('.turn-message').text(response.games.length)
+  $('.total-game-message').text('Total games played is ' + response.games.length)
   store.id = response.games.length
   store.game = response.games[store.id - 1]
   console.log(store.game.id)
@@ -69,15 +91,31 @@ const onGetGamesSuccess = function (response) {
 }
 
 const onGetGamesFailure = function (response) {
-  ('.turn-message').text("Couldn't get games")
+  ('.total-game-message').text("Couldn't get games")
   console.log(response)
+}
+
+const onCreateGameSuccess = function (response) {
+  store.game = response.game
+  console.log(store.game.id)
+  $('.row').show()
+}
+
+const onCreateGameFailure = function (response) {
+  store.game = response.game
+  console.log(store.game.id)
+  $('#message').text("Couldn't bring up the game board")
 }
 
 const onUpdateBoard = function (response) {
   // const box = event.target
   // response.games[response.games.length - 1].cells[box.val()] = 'x'
-  console.log(response)
+  console.log(store.game)
 }
+
+// const showPassword = function () {
+//   $('#change-password').show()
+// }
 
 module.exports = {
   onSignUpSuccess,
@@ -90,5 +128,7 @@ module.exports = {
   onSignOutFailure,
   onGetGamesSuccess,
   onGetGamesFailure,
+  onCreateGameSuccess,
+  onCreateGameFailure,
   onUpdateBoard
 }

@@ -10,8 +10,6 @@ const onSignUp = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
-  console.log(data)
-
   api.signUp(data)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
@@ -21,7 +19,6 @@ const onSignIn = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
-  console.log(data)
   api.signIn(data)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
@@ -50,6 +47,13 @@ const onGetGames = function () {
     .catch(ui.onGetGamesFailure)
 }
 
+const onCreateGame = function () {
+  event.preventDefault()
+  api.createGame()
+    .then(ui.onCreateGameSuccess)
+    .catch(ui.onCreateGameFailure)
+}
+
 const onUpdateGame = function (event) {
   event.preventDefault()
   const box = event.target.getAttribute('value')
@@ -70,5 +74,6 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onGetGames,
-  onUpdateGame
+  onUpdateGame,
+  onCreateGame
 }

@@ -2,6 +2,7 @@
 
 h1 {
   text-align: center;
+  background-color: #FFBB33;
 }
 
 input {
@@ -19,21 +20,64 @@ input {
   float: right;
 }
 
+.success {
+  color: green;
+}
+
+.failure {
+  color: red;
+}
+
+.sign-in-message {
+  text-align: center;
+  margin-right: 45%;
+  margin-left: 45%;
+}
+
+#sign-out {
+  margin-bottom: 25px;
+}
+
 #message {
   text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 #winning-message {
   text-align: center;
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+
+.stats {
+
 }
 
 .box {
-  border: 2px solid #000000;
   height: 40px;
   width: 40px;
   padding: 100px 0;
   text-align: center;
   font-size: 50px;
+}
+
+.box {
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12vh;
+  text-shadow: 2px 2px rgba(0, 0, 0, .25);
+  min-height: calc(100% / 3);
+}
+.box:nth-child(3n) {
+  border-right: 0px;
+}
+.box:nth-last-child(-1n + 3) {
+  border-bottom: 0px;
 }
 
 .row {
@@ -42,26 +86,40 @@ input {
   margin-top: 20px;
   margin-left: 200px;
   margin-right: 200px;
-}
-
-.container {
-  height: 200px;
-  margin-bottom: 80px;
-  background: blue;
+  margin: 0px auto;
+  max-height: calc(100vh - 75px);
+  max-width: calc(100vh - 75px);
 }
 
 body {
   margin: 3px;
+  min-height: 100vh;
+  display: grid;
+  background: rgba(100, 20, 45, 0.1)
 }
 
 .new-game {
-  display: inline;
   margin-bottom: 20px;
 }
 
 .bottom-section {
   align-items: center;
   justify-content: center;
+  margin: auto;
+}
+
+.turn-message {
+  margin: auto;
+  font-size: 18px;
+}
+
+button {
+  margin: 3px;
+  display: inline;
+}
+
+button:hover {
+  background-color: rgba(40, 180, 100, 0.7)
 }
 
 #footer {

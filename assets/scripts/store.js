@@ -4,8 +4,4 @@ const store = {
 
 }
 
-const game = {
-
-}
-
-module.exports = store, game
+module.exports = store
