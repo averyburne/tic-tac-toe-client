@@ -20,14 +20,17 @@ the forms needed to communicate with the API (Sign up, sign in, change
 password, and sign out) as well as the gameboard which was created using
 bootstrap.
 
+### DOM/JQuery
+
 Once that was done, I started with the DOM manipulation using JQuery. I
 wanted to make sure I was able to actually change the screen and add Xs and
-Ox as the user played. This is where I came accross my first big setback. I
+Os as the user played. This is where I came accross my first big setback. I
 was not using grunt serve to test my application, so all of the premade
 links and scripts in the browser template were not importing the
 technologies I needed (like jquery), so I attempted to add the links
 myself, but this ended up just messing up the file paths.
 
+### Game logic
 
 After that I started working on the game logic, which was defnitely my
 favorite part of the project. I ended up deciding to hard code the winning
@@ -36,6 +39,8 @@ tic tac toe. I had somewhat of a difficult time in trying to get the game
 to switch between X and O, but I ended up using a new array's length
 being odd or even to determine whose turn.
 
+
+### API
 
 After that was setting up the API calls. The four authentication ones (sign
 up, sign in, change password, and sign out) were easy enough as it was very
@@ -47,6 +52,8 @@ progressed. First coming up with a way to get the position on the game
 board to correlate with a cell positions in the API, and then getting
 the cells to actually record the moves being made caused a lot of new
 bugs to be introduced as I tried to get it to work.
+
+## Problem solving
 
 The first type of problem I would encounter with my code would be error based problems, this is when I know what I want my code to do, but it wouldn't
 behave as I was expecting it to. My general problem solving strategy for
