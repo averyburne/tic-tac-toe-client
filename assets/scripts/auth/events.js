@@ -56,7 +56,7 @@ const onCreateGame = function () {
 
 const onUpdateGame = function (event) {
   event.preventDefault()
-  const box = event.target.getAttribute('value')
+  // const box = event.target.getAttribute('value')
   api.getGames()
     .then(ui.onUpdateBoard)
     .catch('Couldnt update')

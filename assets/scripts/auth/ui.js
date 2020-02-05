@@ -6,9 +6,9 @@ const onSignUpSuccess = function (response) {
   $('.sign-in-message').text(response.user.email + ' Successfully signed up')
   $('.sign-in-message').removeClass()
   $('.sign-in-message').addClass('success')
-  $('.change-password').show()
-  $('#sign-out').show()
-  $('#game-form').show()
+  // $('.change-password').show()
+  // $('#sign-out').show()
+  // $('#game-form').show()
   $('#sign-up').trigger('reset')
   // $('.row').show()
   $('.turn-message').show()
@@ -52,6 +52,7 @@ const onSignInFailure = function (response) {
 const onChangePasswordSuccess = function (response) {
   $('.sign-in-message').text('Successfully changed password')
   $('#sign-up').trigger('reset')
+  $('.change-password').trigger('reset')
 }
 
 const onChangePasswordFailure = function (response) {
