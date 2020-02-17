@@ -20,6 +20,18 @@ the forms needed to communicate with the API (Sign up, sign in, change
 password, and sign out) as well as the gameboard which was created using
 bootstrap.
 
+### User stories
+As a user I want the website to load quickly and have minimal lag between moves
+As a user I want to be able to see how many games I played, and how many were won by Xs/Os/draws
+As a user I want to login in once and have the website save all of my game(s) data
+As a user, I want the website to load fast so I won't be frustrated
+As a user, I want the game to work correctly so I can actually play it
+As a user, I want the website to be easy to follow so I won't get lost trying to play tic tac toe
+As a user, I want the website to be at least somewhat colorful and have some sort of an artistic flair
+As a user, I want the website to have a password and give me the option to change it so I'll feel more secure
+As a user, I would like be told when the game is not working properly
+As a user, I would like to be told if I won or lost with some kind of colorful message
+
 ### DOM/JQuery
 
 Once that was done, I started with the DOM manipulation using JQuery. I

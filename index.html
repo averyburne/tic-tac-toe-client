@@ -26,7 +26,7 @@
         <input type="password" placeholder="password" name="credentials[password]">
         <input type="submit" value="Sign in">
       </form>
-      <p class="sign-in-message"></p>
+      <p id="sign-in-message"></p>
       <form class='change-password'>
         <h2 class='change-password-head'>Change Password</h2>
         <input name="passwords[old]" type="password" placeholder="Old password">
@@ -37,7 +37,7 @@
         <h2 class='sign-out-head'>Sign Out</h2>
         <input type="submit" value="Sign out">
       </form>
-      <button class="start">Start!</button>
+      <!-- <button class="start">Start!</button> -->
 <div class="container">
       <div class="stats">
       <p class="stats-header">Wins this session</p>
@@ -53,10 +53,11 @@
       <span class="total-game-message"></span>
     </div>
   </div>
+  <div class="board-messages">
       <div id="message"></div>
       <div id="winning-message"></div>
       <div id="game-status"></div>
-
+  </div>
         <div class="row">
           <div class="box col-4" id="square0" value=0></div>
           <div class="box col-4" id="square1" value=1></div>
@@ -68,8 +69,6 @@
           <div class="box col-4" id="square7" value=7></div>
           <div class="box col-4" id="square8" value=8></div>
         </div>
-        <div class="turn-message">It's X's turn</div>
-
 
     <footer id="footer">
       <div>Designed By: Avery Burne</div>

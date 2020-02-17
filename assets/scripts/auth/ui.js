@@ -3,85 +3,85 @@
 const store = require('./../store')
 
 const onSignUpSuccess = function (response) {
-  $('.sign-in-message').text(response.user.email + ' Successfully signed up')
-  $('.sign-in-message').removeClass()
-  $('.sign-in-message').addClass('success')
-  // $('.change-password').show()
-  // $('#sign-out').show()
-  // $('#game-form').show()
+  $('#sign-in-message').text(response.user.email + ' Successfully signed up')
+  $('#sign-in-message').removeClass()
+  $('#sign-in-message').addClass('success')
   $('#sign-up').trigger('reset')
-  // $('.row').show()
-  $('.turn-message').show()
-  $('.bottom-section').show()
   setTimeout(() => {
-    $('.sign-in-message').text('').removeClass('success')
+    $('#sign-in-message').text('').removeClass('success')
   }, 3000)
 }
 
 const onSignUpFailure = function (response) {
-  $('.sign-in-message').removeClass()
-  $('.sign-in-message').addClass('failure')
-  $('.sign-in-message').text('Failed to sign up')
+  $('#sign-in-message').removeClass()
+  $('#sign-in-message').addClass('failure')
+  $('#sign-in-message').text('Failed to sign up')
 }
 
 const onSignInSuccess = function (response) {
-  $('.sign-in-message').text(response.user.email + ' Successfully signed in')
+  $('#sign-in-message').text(response.user.email + ' Successfully signed in')
   $('#sign-in').trigger('reset')
   store.user = response.user
-  $('.sign-in-message').removeClass()
-  $('.sign-in-message').addClass('success')
+  $('#sign-in-message').removeClass()
+  $('#sign-in-message').addClass('success')
   $('.change-password').show()
   $('#sign-out').show()
   $('#game-form').show()
+  $('.start').show()
+  $('.stats').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
+  $('.total-game-message').text('')
   // $('.row').show()
-  $('.turn-message').show()
   $('.bottom-section').show()
-  setTimeout(() => {
-    $('.sign-in-message').text('').removeClass('failure')
+  setTimeout(function () {
+    console.log('hello')
+    $('#sign-in-message').text('').removeClass('failure')
   }, 3000)
 }
 
 const onSignInFailure = function (response) {
-  $('.sign-in-message').text('Failed to sign in')
-  $('.sign-in-message').removeClass()
-  $('.sign-in-message').addClass('failure')
+  $('#sign-in-message').text('Failed to sign in')
+  $('#sign-in-message').removeClass()
+  $('#sign-in-message').addClass('failure')
 }
 
 const onChangePasswordSuccess = function (response) {
-  $('.sign-in-message').text('Successfully changed password')
-  $('#sign-up').trigger('reset')
+  $('#sign-in-message').text('Successfully changed password')
+  // $('#sign-up').trigger('reset')
   $('.change-password').trigger('reset')
+  setTimeout(() => {
+    $('#sign-in-message').text('').removeClass('success')
+  }, 3000)
 }
 
 const onChangePasswordFailure = function (response) {
-  $('.sign-in-message').text('Failed to change password')
+  $('#sign-in-message').text('Failed to change password')
 }
 
 const onSignOutSuccess = function (response) {
-  $('.sign-in-message').text('Successfully signed out')
+  $('#sign-in-message').text('Successfully signed out')
   $('.change-password').hide()
   $('#sign-out').hide()
   $('#sign-in').show()
   $('#sign-up').show()
-  // $('.x-win').text("X's total wins: 0")
-  // $('.o-win').text("O's total wins: 0")
-  // $('.total-draws').text('Total draws: 0')
-  // gameLogic.xTotalWin = 0
-  // gameLogic.oTotalWin = 0
-  // gameLogic.totalDraws = 0
-
+  $('.row').hide()
+  $('.stats').hide()
+  $('.bottom-section').hide()
+  $('.board-messages').hide()
+  $('.turn-message').hide()
+  setTimeout(() => {
+    $('#sign-in-message').text('').removeClass('success')
+  }, 3000)
   store.user = null
 }
 
 const onSignOutFailure = function (response) {
-  $('.sign-in-message').text('Failed to sign out')
+  $('#sign-in-message').text('Failed to sign out')
 }
 
 const onGetGamesSuccess = function (response) {
-  // ('#turn-message').text("Here's the games")
-  $('.total-game-message').text('Total games played is ' + response.games.length)
+  $('.total-game-message').text(response.games.length + ' total game(s) played')
   store.id = response.games.length
   store.game = response.games[store.id - 1]
 }
@@ -92,6 +92,7 @@ const onGetGamesFailure = function (response) {
 
 const onCreateGameSuccess = function (response) {
   store.game = response.game
+  $('.start').hide()
   $('.row').show()
 }
 

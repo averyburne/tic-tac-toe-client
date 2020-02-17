@@ -1,11 +1,11 @@
 // this is where event functions will be
 const api = require('./api')
 const ui = require('./ui')
-// const gameLogic = require('../game-logic')
 
 const getFormFields = require('./../../../lib/get-form-fields')
 // function to change the box text to an x
 
+// Sign up event handler
 const onSignUp = function (event) {
   event.preventDefault()
   const form = event.target
@@ -15,6 +15,7 @@ const onSignUp = function (event) {
     .catch(ui.onSignUpFailure)
 }
 
+// Sign in event handler
 const onSignIn = function (event) {
   event.preventDefault()
   const form = event.target
@@ -24,6 +25,7 @@ const onSignIn = function (event) {
     .catch(ui.onSignInFailure)
 }
 
+// Change password event handler
 const onChangePassword = function (event) {
   event.preventDefault()
   const form = event.target
@@ -33,6 +35,7 @@ const onChangePassword = function (event) {
     .catch(ui.onChangePasswordFailure)
 }
 
+// Sign out event handler
 const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
@@ -56,16 +59,10 @@ const onCreateGame = function () {
 
 const onUpdateGame = function (event) {
   event.preventDefault()
-  // const box = event.target.getAttribute('value')
   api.getGames()
     .then(ui.onUpdateBoard)
     .catch('Couldnt update')
 }
-
-// const onCreateGame = function (event) {
-//   event.preventDefault()
-//
-// }
 
 module.exports = {
   onSignUp,

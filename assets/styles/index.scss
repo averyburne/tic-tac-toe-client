@@ -28,7 +28,7 @@ input {
   color: red;
 }
 
-.sign-in-message {
+#sign-in-message {
   text-align: center;
   margin: 0 auto;
 }
@@ -49,6 +49,11 @@ input {
   font-size: 30px;
 }
 
+.turn-message {
+  display: block;
+  margin: 15px;
+}
+
 .start {
   width: 200px;
   text-align: center;
@@ -57,6 +62,10 @@ input {
 
 .stats {
 
+}
+
+.total-game-message {
+  margin: 8px;
 }
 
 .container {
@@ -91,14 +100,17 @@ input {
 
 .row {
   // background: #ff0000;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   margin-top: 20px;
   margin-left: 200px;
   margin-right: 200px;
   margin: 0px auto;
-  max-height: calc(100vh - 75px);
+  max-height: calc(100vh - 85px);
   max-width: calc(100vh - 75px);
 }
+ .square7 {
+   border: solid black 1px;
+ }
 
 body {
   margin: 3px;
@@ -120,6 +132,8 @@ body {
 .turn-message {
   margin: 20px auto;
   font-size: 28px;
+  border: 1px solid black;
+  display: block;
 }
 
 button {
@@ -134,6 +148,7 @@ button:hover {
 #footer {
   position: static;
   display: block;
+  margin-top: 110px;
   left: 0;
   bottom: 0;
   width: 100%;
