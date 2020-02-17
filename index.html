@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Tic-Tac-Toe</h1>
+      <form id='sign-up'>
+        <h2 class='sign-up-head'>Sign Up!</h2>
+        <input type="email" placeholder="john@example.com" name="credentials[email]">
+        <input type="password" placeholder="password" name="credentials[password]">
+        <input type="password" placeholder="password confirmation" name="credentials[password_confirmation]">
+        <input type="submit" value="Sign up">
+      </form>
+      <form id='sign-in'>
+        <h2 class='sign-in-head'>Sign In!</h2>
+        <input type="email" placeholder="john@example.com" name="credentials[email]">
+        <input type="password" placeholder="password" name="credentials[password]">
+        <input type="submit" value="Sign in">
+      </form>
+      <p id="sign-in-message"></p>
+      <form class='change-password'>
+        <h2 class='change-password-head'>Change Password</h2>
+        <input name="passwords[old]" type="password" placeholder="Old password">
+        <input name="passwords[new]" type="password" placeholder="New password">
+        <input type="submit" value="Change Password">
+      </form>
+      <form id='sign-out'>
+        <h2 class='sign-out-head'>Sign Out</h2>
+        <input type="submit" value="Sign out">
+      </form>
+      <!-- <button class="start">Start!</button> -->
+<div class="container">
+      <div class="stats">
+      <p class="stats-header">Wins this session</p>
+      <p class="x-win">X's total wins: 0</p>
+      <p class="o-win">O's total wins: 0</p>
+      <p class="total-draws">Total draws: 0</p>
+    </div>
+      <div class="bottom-section">
+      <button class="new-game">New game</button>
+      <form id="game-form">
+        <button>Get games</button>
+      </form>
+      <span class="total-game-message"></span>
+    </div>
+  </div>
+  <div class="board-messages">
+      <div id="message"></div>
+      <div id="winning-message"></div>
+      <div id="game-status"></div>
+  </div>
+        <div class="row">
+          <div class="box col-4" id="square0" value=0></div>
+          <div class="box col-4" id="square1" value=1></div>
+          <div class="box col-4" id="square2" value=2></div>
+          <div class="box col-4" id="square3" value=3></div>
+          <div class="box col-4" id="square4" value=4></div>
+          <div class="box col-4" id="square5" value=5></div>
+          <div class="box col-4" id="square6" value=6></div>
+          <div class="box col-4" id="square7" value=7></div>
+          <div class="box col-4" id="square8" value=8></div>
+        </div>
+
+    <footer id="footer">
+      <div>Designed By: Avery Burne</div>
+      <div>Copyright 2020</div>
+    </footer>
+  </body>
+</html>
